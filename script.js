@@ -40,3 +40,30 @@ function generateMeme(img, topText, bottomText, topTextSize, bottomTextSize) {
         ctx.strokeText(t, canvas.width / 2, canvas.height - i * fontSize, canvas.width);
     });
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Initialize variables
+    const topTextInput = document.getElementById('top-text');
+    const bottomTextInput = document.getElementById('bottom-text');
+    const topTextSizeInput = document.getElementById('top-text-size-input');
+    const bottomTextSizeInput = document.getElementById('bottom-text-size-input');
+    const imageInput = document.getElementById('image-input');
+    const generateBtn = document.getElementById('generate-btn');
+    // Default/Demo text
+    topTextInput.value = 'Top\nValue';
+    bottomTextInput.value = 'Bottom\nValue';
+
+    // Generate button click listener
+    generateBtn.addEventListener('click', () => {
+        // Read image as DataURL using the FileReader API
+        const reader = new FileReader();
+        reader.onload = () => {
+            const img = new Image;
+            img.src = reader.result;
+            img.onload = () => {
+                generateMeme(img, topTextInput.value, bottomTextInput.value, topTextSizeInput.value, bottomTextSizeInput.value);
+            };
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+    });
+});
