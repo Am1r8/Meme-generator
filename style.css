@@ -1,0 +1,20 @@
+h1 {
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+body {
+    margin: 10px;
+    background-color: lightblue;
+}
+
+p {
+    font-family: "sans-serif";
+    text-align: center;
+}
+
+#meme-canvas {
+    width: 300px;
+    margin: auto;
+}
